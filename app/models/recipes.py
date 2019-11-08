@@ -11,5 +11,5 @@ class Recipes(orm_base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     body = Column(String)
-    ingredients = relationship(
-        "Ingredients", secondary=Receipes_Ingredients, back_populates="recipes")
+    # ingredients = relationship(
+    #   "Ingredients", secondary="Receipes_Ingredients")

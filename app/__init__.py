@@ -1,4 +1,5 @@
 from flask import Flask
+
 from config import Config
 from .db_proxy import db, setup_db
 
@@ -10,5 +11,5 @@ def create_app():
     with app.app_context():
         # import routes and db
         setup_db()
-
+        from . import routes
         return app
