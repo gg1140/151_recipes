@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 from flask import Flask
 from config import Config
+from db_proxy import db, setup_db
 
 
 def create_app():
@@ -9,9 +9,6 @@ def create_app():
 
     with app.app_context():
         # import routes and db
-        return app
-=======
-<ddddddd> 
+        setup_db()
 
-asdfi asdf das 
->>>>>>> eb4a1bd1df29928f9acb93077fe618d0bd3476f0
+        return app
