@@ -52,7 +52,9 @@ class SqliteDB(metaclass=Singleton):
                 self.orm_base = declarative_base(bind=self.engine)
             else:
                 self.orm_base = orm_base
-                self.orm_base.bind = self.engine
+                self.orm_base.metadata.bind = self.engine
+
+            self.orm_base.metadata.create_all()
 
             self.sesh_factory = sessionmaker(bind=self.engine)
             print("database connected")
