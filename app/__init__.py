@@ -1,6 +1,6 @@
 from flask import Flask
 from config import Config
-from db_proxy import db, setup_db
+from .db_proxy import db, setup_db
 
 
 def create_app():

@@ -38,7 +38,7 @@ class SqliteDB(metaclass=Singleton):
         self.disconnect()
 
     # Establish connection to database & initialize other variables
-    def connect(self, uri, echo=False):
+    def connect(self, uri, orm_base=None, echo=False):
         self.disconnect()
 
         if uri != None:
@@ -48,7 +48,12 @@ class SqliteDB(metaclass=Singleton):
             except Exception as e:
                 print("%s: could not connect to %s" % (e, uri))
 
-            self.orm_base = declarative_base(bind=self.engine)
+            if orm_base == None:
+                self.orm_base = declarative_base(bind=self.engine)
+            else:
+                self.orm_base = orm_base
+                self.orm_base.bind = self.engine
+
             self.sesh_factory = sessionmaker(bind=self.engine)
             print("database connected")
 
