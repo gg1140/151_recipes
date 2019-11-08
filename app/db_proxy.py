@@ -10,7 +10,7 @@ db = SqliteDB()
 
 # Provide file path to set up the db object
 def setup_db():
-    db.connect(app.config['DATABASE_URI'], orm_base=orm_base, echo=False)
+    db.connect(app.config["DATABASE_URI"], orm_base=orm_base, echo=False)
     # List all tables in the database object
     # for tb in db.orm_base.metadata.tables.keys():
     #    print("Table: %s" % tb)
