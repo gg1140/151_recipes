@@ -1,8 +1,9 @@
-from sqlalchemy import Table, Column, Integer, ForeignKey
+from sqlalchemy import Table, Column, String, Integer, ForeignKey
+from sqlalchemy.orm import relationship
 
 from . import orm_base
 
-Receipes_Ingredients = Table("Recipes_Ingredients", orm_base.metadata,
-                             Column("Recipes_id", Integer,
-                                    ForeignKey("Recipes.id")),
-                             Column("Ingredients_id", Integer, ForeignKey("Ingredients.id")))
+Recipes_Ingredients = Table("Recipes_Ingredients", orm_base.metadata,
+                            Column("Recipes_id", Integer,
+                                   ForeignKey("Recipes.id")),
+                            Column("Ingredients_id", Integer, ForeignKey("Ingredients.id")))
