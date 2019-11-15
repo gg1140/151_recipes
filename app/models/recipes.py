@@ -13,3 +13,13 @@ class Recipes(orm_base):
     body = Column(String)
     ingredients = relationship(
         "Ingredients", secondary=Recipes_Ingredients, back_populates="recipes")
+
+    @classmethod
+    def toDict(cls, recipe):
+        output = {
+            'name': recipe.name,
+            'body': recipe.body,
+            'ingredients': []}
+        for i in recipe.ingredients:
+            output['ingredients'].append(i.name)
+        return output
