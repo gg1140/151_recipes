@@ -15,3 +15,5 @@ def setup_db():
     # for tb in db.orm_base.metadata.tables.keys():
     #    print("Table: %s" % tb)
     return
+
+# manage db connection behavior during flask app teardown
