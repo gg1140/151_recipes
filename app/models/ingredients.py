@@ -16,6 +16,7 @@ class Ingredients(orm_base):
     @classmethod
     def toDict(cls, ingred):
         output = {
+            'id': ingred.id,
             'name': ingred.name,
             'recipes': []}
         for i in ingred.recipes:

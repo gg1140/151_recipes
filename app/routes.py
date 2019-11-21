@@ -5,6 +5,7 @@ from sqlalchemy.sql import exists
 from .models import *
 from .db_proxy import db
 from .helpers import *
+from .db_trans import RecipeQueryHelper, IngredientQueryHelper
 
 
 @app.route('/test/', methods=['GET'])
@@ -35,12 +36,23 @@ def recipe_ap():
     if request.method == 'GET':
         output = []
         # retrive data
-        with db.get_sesh() as sesh:
-            recipe_list = sesh.query(Recipes).all()
+        # with db.get_sesh() as sesh:
+        #    recipe_list = sesh.query(Recipes).all()
 
-            for r in recipe_list:
-                output.append(Recipes.toDict(r))
-
+        #    for r in recipe_list:
+        #        output.append(Recipes.toDict(r))
+        opt = request.args['opt']
+        input = request.args
+        if opt == 'all':
+            output = RecipeQueryHelper.all()
+        elif opt == 'by_id' and input is not None:
+            output = RecipeQueryHelper.by_id(ids=input['ids'])
+        elif opt == 'by_name' and input is not None:
+            output = RecipeQueryHelper.by_name(names=input['names'])
+        elif opt == 'by_ingredient' and input is not None:
+            output = RecipeQueryHelper.by_ingredient(
+                ingredients=input['ingredients'])
+        print(output)
         return jsonify(output)
 
     elif request.method == 'POST':
@@ -76,12 +88,22 @@ def ingredient_ap():
 
     if request.method == 'GET':
         output = []
+        # with db.get_sesh() as sesh:
+        #    ingred_list = sesh.query(Ingredients).all()
 
-        with db.get_sesh() as sesh:
-            ingred_list = sesh.query(Ingredients).all()
-
-            for i in ingred_list:
-                output.append(Ingredients.toDict(i))
+        #    for i in ingred_list:
+        #        output.append(Ingredients.toDict(i))
+        opt = request.args['opt']
+        input = request.args
+        if opt == 'all':
+            output = IngredientQueryHelper.all()
+        elif opt == 'by_id' and input is not None:
+            output = IngredientQueryHelper.by_id(ids=input['ids'])
+        elif opt == 'by_name' and input is not None:
+            output = IngredientQueryHelper.by_name(names=input['names'])
+        elif opt == 'by_recipe' and input is not None:
+            output = IngredientQueryHelper.by_recipe(
+                recipes=input['recipes'])
 
         return jsonify(output)
 

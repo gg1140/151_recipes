@@ -1,0 +1,18 @@
+<div class="searchbox">
+  <div class="innershadow">
+    <select [(ngModel)]="searchCategory" (change)="search()">
+      <option *ngFor="let category of searchCategories" value="{{ category }}">
+        {{ category }}
+      </option>
+    </select>
+    <input
+      id="searchInput"
+      type="text"
+      [(ngModel)]="queryString"
+      (keyup.enter)="search()"
+    />
+    <button type="submit" (click)="search()">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>

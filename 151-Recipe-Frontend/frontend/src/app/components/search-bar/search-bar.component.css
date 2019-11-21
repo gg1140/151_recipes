@@ -1,0 +1,38 @@
+.searchbox {
+  background-color: #f0f0f0;
+  opacity: 0.5;
+  border: solid 1px #ddd;
+  border-radius: 1em;
+  margin: 0.3em 1em 0.3em 1em;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.searchbox .innershadow {
+  /*background: transparent;
+    border: none;
+    border-radius: 10px;*/
+}
+
+.searchbox input[type="text"] {
+  background: transparent;
+  font-size: 1.25em;
+  padding: 6px;
+  margin-top: 0px;
+  border: none;
+  border-radius: 1em;
+}
+
+.searchbox button {
+  background: transparent;
+  font-size: 1.25em;
+  float: right;
+  padding: 6px 10px;
+  margin-top: 0px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.searchbox button:hover {
+  background: #ccc;
+}

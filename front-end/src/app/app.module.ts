@@ -1,20 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { AppRoutingModule, routingComponent } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { NavigationBarComponent } from "./navigation-bar/navigation-bar.component";
+import { SearchBoxComponent } from "./search-box/search-box.component";
+/*import { SearchService } from "./services/search.service";*/
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    routingComponent,
+    SearchBoxComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [
+    /*SearchService*/
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -2,3 +2,5 @@
 */__pycache__/
 */test/
 *.db
+front-end/*
+*/node_modules/*

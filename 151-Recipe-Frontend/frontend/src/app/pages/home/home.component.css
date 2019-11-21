@@ -1,0 +1,51 @@
+.home {
+  overflow: hidden;
+}
+
+.bgImg {
+  position: relative;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  z-index: -1;
+
+  width: 100vw;
+  height: calc(100vw * 0.666);
+  /*min-width: 975px;
+    min-height: 650px;*/
+  max-height: 100vw;
+  background-image: url("https://drive.google.com/uc?export=view&id=14UqBCV4BxMEukRVtydTqbbidtXbwq-jT");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgImg > #pagetitle {
+  position: relative;
+  top: 40%;
+  left: 5%;
+  width: calc(100vw * 0.4);
+  height: auto;
+  max-width: 630px;
+  max-height: 362px;
+}
+
+.home button {
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 2em;
+  margin: 0 50% 0 50%;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+
+  font-size: 2em;
+}
+
+#hometoabout:hover {
+  background-color: grey;
+  opacity: 0.7;
+  color: white;
+}

@@ -1,0 +1,35 @@
+.topbar {
+  position: fixed;
+  width: 100%;
+  height: 5em;
+  padding: 1em;
+  top: 0;
+  left: 0%;
+  right: 0%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  font-family: Raleway;
+}
+
+.topbar > a {
+  /*background-color: SlateGray;
+  color: white;*/
+  color: black;
+  font-weight: 200;
+  font-size: 2em;
+  margin: 0.3em;
+}
+
+.topbar a:visited a:link {
+  color: indianred;
+}
+
+.topbar a:hover {
+  color: indianred;
+}
+
+.topbar a.active {
+  color: indianred;
+}
