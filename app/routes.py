@@ -63,7 +63,8 @@ def recipe_ap():
         with db.get_sesh() as sesh:
             #input['name'] = string_normalize(input['name'])
 
-            new_recipe = Recipes(name=input['name'], body=input['body'])
+            new_recipe = Recipes(
+                name=input['name'], body=input['body'], imgUrl=input['imgUrl'])
 
             ingredients = []
 

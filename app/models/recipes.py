@@ -11,6 +11,7 @@ class Recipes(orm_base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     body = Column(String)
+    imgUrl = Column(String)
     ingredients = relationship(
         "Ingredients", secondary=Recipes_Ingredients, back_populates="recipes")
 
@@ -20,6 +21,7 @@ class Recipes(orm_base):
             'id': recipe.id,
             'name': recipe.name,
             'body': recipe.body,
+            'imgUrl': recipe.imgUrl,
             'ingredients': []}
         for i in recipe.ingredients:
             output['ingredients'].append(i.name)
