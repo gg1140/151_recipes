@@ -1,1 +1,24 @@
-<p>recipe works!</p>
+<div class="recipe-content">
+  <div class="row">
+    <div class="col-sm-12 recipe-title">
+      <h2>{{ recipe["name"] }}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 recipe-body">
+      <h4>Ingredients</h4>
+      <ul>
+        <li *ngFor="let i of recipe['ingredients']">
+          {{ i }}
+        </li>
+      </ul>
+      <h4>Directions</h4>
+      <p>
+        <span [innerHTML]="getRecipeBody()"></span>
+      </p>
+    </div>
+    <div class="col-sm-6 recipe-img">
+      <img [src]="recipe['imgUrl']" alt="recipe_img" />
+    </div>
+  </div>
+</div>

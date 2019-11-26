@@ -8,8 +8,8 @@ import { AppComponent } from "./app.component";
 import { SearchBarComponent } from "./components/search-bar/search-bar.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { BackendService } from "./services/backend.service";
-import { SearchResultComponent } from './pages/search-result/search-result.component';
-import { RecipeThumbnailComponent } from './components/recipe-thumbnail/recipe-thumbnail.component';
+import { RecipeThumbnailComponent } from "./components/recipe-thumbnail/recipe-thumbnail.component";
+import { DataShareService } from "./services/data-share.service";
 
 @NgModule({
   declarations: [
@@ -17,11 +17,10 @@ import { RecipeThumbnailComponent } from './components/recipe-thumbnail/recipe-t
     routingComponent,
     NavComponent,
     SearchBarComponent,
-    SearchResultComponent,
     RecipeThumbnailComponent
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
-  providers: [BackendService],
+  providers: [BackendService, DataShareService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

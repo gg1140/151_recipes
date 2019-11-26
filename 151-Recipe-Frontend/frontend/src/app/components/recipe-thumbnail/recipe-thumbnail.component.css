@@ -1,0 +1,16 @@
+.card {
+  display: inline-block;
+  margin: 1em;
+  font-family: Raleway;
+}
+
+.card a {
+  color: black;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.25em;
+}
+
+.card a:hover {
+  color: indianred;
+}

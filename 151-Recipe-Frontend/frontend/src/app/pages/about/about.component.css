@@ -1,0 +1,28 @@
+.about-content {
+  position: relative;
+
+  top: 3em;
+  padding: 1.5em;
+
+  height: 45vh;
+
+  font-family: Baskervville;
+}
+
+.about-content h2,
+.about-content h3,
+.about-content h4,
+.about-content h5,
+.about-content h6 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5em;
+}
+
+.about-content p {
+  margin-top: 1.5em;
+  margin-left: 20%;
+  margin-right: 20%;
+
+  font-size: 1.25em;
+}

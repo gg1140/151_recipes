@@ -14,20 +14,32 @@ def test_server_activity():
         return 'Server is Live!'
 
 
-@app.route('/add/', methods=['GET', 'POST'])
+@app.route('/add/', methods=['POST'])
 def add():
     if request.method == 'POST':
-        recipe_name = request.form['recipe_name']
-        ingredient = request.form['ingredient']
+        input = request.get_json()
+        with db.get_sesh() as sesh:
+            #input['name'] = string_normalize(input['name'])
+            for r in input:
+                new_recipe = Recipes(
+                    name=r['name'], body=r['body'], imgUrl=r['imgUrl'])
 
-        with db.get_sesh() as add_session:
-            new_ingred = Ingredients(name=ingredient)
-            new_recipe = Recipes(name=recipe_name, body="",
-                                 ingredients=[new_ingred])
-            add_session.add(new_recipe)
-            add_session.add(new_ingred)
-        return url_for('recipe_ap')
-    return render_template('db_input_test.html')
+                ingredients = []
+
+                for i in r['ingredients']:
+                    i = string_normalize(i)
+                    (in_db,), = sesh.query(exists().where(Ingredients.name == i))
+                    if not in_db:
+                        new_ingredient = Ingredients(name=i)
+                        sesh.add(new_ingredient)
+
+                    ingred_obj = sesh.query(
+                        Ingredients).filter_by(name=i).first()
+                    ingredients.append(ingred_obj)
+
+                new_recipe.ingredients = ingredients
+                sesh.add(new_recipe)
+    return "Add called"
 
 
 @app.route('/recipe/', methods=['GET', 'POST'])
@@ -35,12 +47,6 @@ def recipe_ap():
 
     if request.method == 'GET':
         output = []
-        # retrive data
-        # with db.get_sesh() as sesh:
-        #    recipe_list = sesh.query(Recipes).all()
-
-        #    for r in recipe_list:
-        #        output.append(Recipes.toDict(r))
         opt = request.args['opt']
         input = request.args
         if opt == 'all':
@@ -52,7 +58,6 @@ def recipe_ap():
         elif opt == 'by_ingredient' and input is not None:
             output = RecipeQueryHelper.by_ingredient(
                 ingredients=input['ingredients'])
-        print(output)
         return jsonify(output)
 
     elif request.method == 'POST':
@@ -89,11 +94,6 @@ def ingredient_ap():
 
     if request.method == 'GET':
         output = []
-        # with db.get_sesh() as sesh:
-        #    ingred_list = sesh.query(Ingredients).all()
-
-        #    for i in ingred_list:
-        #        output.append(Ingredients.toDict(i))
         opt = request.args['opt']
         input = request.args
         if opt == 'all':

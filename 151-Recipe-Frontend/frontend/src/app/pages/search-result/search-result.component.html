@@ -1,1 +1,6 @@
-<p>search-result works!</p>
+<div class="card-container">
+  <app-recipe-thumbnail
+    *ngFor="let result of results"
+    [resource]="result"
+  ></app-recipe-thumbnail>
+</div>

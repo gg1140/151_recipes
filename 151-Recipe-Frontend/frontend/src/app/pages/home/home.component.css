@@ -9,8 +9,8 @@
   right: 0%;
   z-index: -1;
 
-  width: 100vw;
-  height: calc(100vw * 0.666);
+  height: 100vh; /*calc(100vw * 0.666);*/
+  overflow: hidden;
   /*min-width: 975px;
     min-height: 650px;*/
   max-height: 100vw;

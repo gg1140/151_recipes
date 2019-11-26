@@ -1,0 +1,7 @@
+.card-container {
+  position: relative;
+
+  top: 4.5em;
+
+  flex-wrap: wrap;
+}

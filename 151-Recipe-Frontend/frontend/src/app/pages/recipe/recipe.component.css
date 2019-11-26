@@ -1,0 +1,50 @@
+.recipe-content {
+  position: relative;
+
+  top: 4.5em;
+  padding: 1.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+
+  font-family: Baskervville;
+}
+
+.recipe-title h2 {
+  text-align: center;
+  padding: 1em;
+
+  color: #c14f50;
+  font-weight: 700;
+  font-size: 2.5em;
+}
+
+.recipe-body {
+  font-size: 1.25em;
+}
+
+.recipe-body h2,
+.recipe-body h3,
+.recipe-body h4 {
+  text-align: center;
+  font-weight: 700;
+}
+
+.col-sm-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.col-sm-6.recipe-body {
+  padding-right: 1em;
+}
+
+.recipe-img {
+  overflow: hidden;
+  height: 60vw;
+}
+
+.recipe-img img {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
