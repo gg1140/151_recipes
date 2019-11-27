@@ -70,21 +70,23 @@ def recipe_ap():
 
             new_recipe = Recipes(
                 name=input['name'], body=input['body'], imgUrl=input['imgUrl'])
-
-            ingredients = []
+            sesh.add(new_recipe)
+            new_recipe = sesh.query(Recipes).filter_by(
+                name=input['name']).first()
 
             for i in input['ingredients']:
-                i = string_normalize(i)
+                #    i = string_normalize(i)
                 (in_db,), = sesh.query(exists().where(Ingredients.name == i))
                 if not in_db:
+                    # add new ingredients into database
                     new_ingredient = Ingredients(name=i)
                     sesh.add(new_ingredient)
 
-                ingred_obj = sesh.query(Ingredients).filter_by(name=i).first()
-                ingredients.append(ingred_obj)
-
-            new_recipe.ingredients = ingredients
-            sesh.add(new_recipe)
+                new_ingredient = sesh.query(
+                    Ingredients).filter_by(name=i).first()
+                new_recipe.ingredients.append(new_ingredient)
+                # sesh.query(Recipes_Ingredients).filter_by(
+                #    Recipes_id=new_recipe.id, Ingredients_id=new_ingredient.id).update({'Recipes_id': new_recipe.id, 'Ingredients_id': new_ingredient.id, 'quantity': input['ingredients'][i]}, synchronize_session=False)
 
         return 'Added to database successfully'
 
